@@ -1,0 +1,1969 @@
+# SELLFLOW — FIGMA MASTER DESIGN & PRODUCT ENVIRONMENT
+
+## ROLE
+
+Act as a **senior SaaS product designer, UX strategist, UI designer, and design-systems architect**.
+
+You are designing the complete product environment for **SellFlow**, an AI-powered platform that helps African digital-product creators turn their digital products into professional online sales systems.
+
+This design will later be handed to an AI coding agent such as **Kiro** to implement.
+
+Your job at this stage is **NOT to write backend code or build the actual application logic**.
+
+Your job is to create the **complete visual, UX, interaction, component, and design-system foundation** that a developer can implement accurately.
+
+---
+
+# 1. PRODUCT
+
+## Working Product Name
+
+**SellFlow**
+
+The name may change later, so do not make the entire visual identity dependent on the wordmark.
+
+## Core Positioning
+
+SellFlow is not simply a platform for uploading and selling PDFs.
+
+It is an **AI-powered digital product sales system**.
+
+The core promise:
+
+> **Tell us what you're selling. We'll help you build the sales system to sell it.**
+
+Alternative positioning:
+
+> Create. Sell. Deliver. Grow.
+
+The product should feel like the easiest place for a creator to go from:
+
+**Digital product → Professional sales page → Checkout → Payment → Delivery → Customers → Follow-up**
+
+---
+
+# 2. TARGET USER
+
+The primary customer is an African digital-product creator.
+
+Examples:
+
+* Ebook creators
+* Coaches
+* Consultants
+* Educators
+* Online teachers
+* Pastors and ministry creators
+* Fitness creators
+* Beauty creators
+* Relationship educators
+* Business educators
+* Food creators
+* Freelancers
+* Designers
+* Marketing experts
+* Personal brands
+
+Most users are not technical.
+
+They may have:
+
+* A PDF
+* An ebook
+* A guide
+* A workbook
+* A course outline
+* An audience
+* An idea
+
+But they may not know how to:
+
+* Position the product
+* Write persuasive sales copy
+* Design a sales page
+* Build checkout
+* Set up payment
+* Deliver the product
+* Collect leads
+* Follow up with customers
+
+SellFlow should make these tasks feel simple.
+
+---
+
+# 3. THE CORE USER EXPERIENCE
+
+The primary experience should communicate:
+
+> **"I have something to sell. SellFlow will help me turn it into something people can buy."**
+
+Ideal flow:
+
+1. Sign up
+2. Enter dashboard
+3. Click **Create Product**
+4. Upload PDF
+5. SellFlow understands the product
+6. AI asks a few intelligent questions
+7. AI generates a professional sales page
+8. Creator reviews and edits it
+9. Creator connects payment
+10. Creator publishes
+11. Customer visits sales page
+12. Customer checks out
+13. Payment is processed
+14. Customer receives download
+15. Creator sees the sale in dashboard
+
+The product should make this journey visually obvious.
+
+---
+
+# 4. DESIGN PHILOSOPHY
+
+Create a **premium modern SaaS product**.
+
+The visual quality should feel comparable to high-quality products from:
+
+* Stripe
+* Linear
+* Notion
+* ConvertKit
+* Canva
+* Webflow
+* Framer
+* modern AI SaaS products
+
+But **do not copy their interfaces**.
+
+Create a distinct SellFlow identity.
+
+The product should feel:
+
+* Premium
+* Simple
+* Intelligent
+* Modern
+* Trustworthy
+* Calm
+* Conversion-focused
+* Friendly
+* Professional
+* AI-powered without feeling gimmicky
+
+Avoid:
+
+* Generic startup dashboards
+* Excessive gradients
+* Excessive glassmorphism
+* Neon AI aesthetics
+* Overly colorful interfaces
+* Excessive shadows
+* Clutter
+* Tiny unreadable text
+* Too many cards
+* Excessive animations
+* Complicated navigation
+
+Use whitespace aggressively.
+
+The interface should feel like:
+
+> **"This is where I build and sell my digital products."**
+
+Not:
+
+> "This is another payment/file-hosting platform."
+
+---
+
+# 5. VISUAL IDENTITY
+
+Create a complete initial design system.
+
+## Typography
+
+Use a highly readable modern sans-serif.
+
+Suggested direction:
+
+* Inter
+* Geist
+* Manrope
+* Plus Jakarta Sans
+
+Use a strong hierarchy.
+
+Suggested hierarchy:
+
+* Display
+* H1
+* H2
+* H3
+* Body Large
+* Body
+* Body Small
+* Caption
+* Label
+
+Typography should feel premium and spacious.
+
+---
+
+# 6. COLOR SYSTEM
+
+Create a restrained professional palette.
+
+Primary interface should be light.
+
+Use:
+
+* White
+* Soft off-white
+* Very light neutral backgrounds
+* Dark charcoal/navy text
+* Neutral gray borders
+* One distinctive primary brand color
+* Subtle secondary accent
+
+The brand color should be used intentionally for:
+
+* Primary buttons
+* Active navigation
+* Important links
+* AI actions
+* Selected states
+* Progress indicators
+* Conversion-focused elements
+
+Do not make every screen colorful.
+
+Create semantic colors for:
+
+* Success
+* Warning
+* Error
+* Information
+* AI
+* Draft
+* Published
+* Archived
+
+---
+
+# 7. DESIGN TOKENS
+
+Create reusable design tokens for:
+
+### Colors
+
+* Background
+* Surface
+* Surface elevated
+* Border
+* Text primary
+* Text secondary
+* Text muted
+* Primary
+* Primary hover
+* Success
+* Warning
+* Error
+* Info
+* AI accent
+
+### Spacing
+
+Create a consistent spacing scale.
+
+### Radius
+
+Use consistent rounded corners.
+
+### Shadows
+
+Use subtle shadows only where necessary.
+
+### Typography
+
+Define:
+
+* Font families
+* Font sizes
+* Font weights
+* Line heights
+* Letter spacing
+
+### Components
+
+Create reusable components rather than designing every screen independently.
+
+---
+
+# 8. INFORMATION ARCHITECTURE
+
+The authenticated creator dashboard should have this primary navigation:
+
+### Main
+
+* Dashboard
+* Products
+* Customers
+* Leads
+* Emails
+* Analytics
+
+### Secondary
+
+* Settings
+
+The primary CTA should always be easy to find:
+
+**+ Create Product**
+
+The sidebar should clearly communicate where the creator is.
+
+---
+
+# 9. CREATE THESE PRIMARY SCREENS
+
+Design the following screens as high-fidelity production-ready UI.
+
+## PUBLIC WEBSITE
+
+### 1. Homepage
+
+Create a compelling SaaS landing page.
+
+Hero:
+
+> **Turn your digital product into a sales system.**
+
+Supporting message explaining that SellFlow helps creators create, sell, deliver and grow their digital products without complicated technology.
+
+Primary CTA:
+
+**Create Your Product**
+
+Secondary CTA:
+
+**See How It Works**
+
+Include:
+
+* Hero
+* Product workflow
+* AI sales-page creation
+* Benefits
+* How it works
+* Creator use cases
+* Product features
+* Pricing preview
+* Testimonials placeholder
+* FAQ
+* Final CTA
+* Footer
+
+The homepage should visually demonstrate the product.
+
+Show realistic dashboard/product screenshots.
+
+---
+
+### 2. Pricing
+
+Design a simple pricing page.
+
+Possible plans:
+
+#### Free
+
+For creators getting started.
+
+#### Creator
+
+For creators building a serious digital-product business.
+
+#### Pro
+
+For creators scaling their sales system.
+
+Do not overload the pricing page.
+
+Make the differences extremely clear.
+
+---
+
+# 10. AUTHENTICATION
+
+Design:
+
+### Login
+
+Fields:
+
+* Email
+* Password
+
+Actions:
+
+* Log in
+* Forgot password
+* Continue with Google if appropriate
+
+### Sign Up
+
+Fields:
+
+* Full name
+* Email
+* Password
+* Business/creator name
+
+CTA:
+
+**Create Account**
+
+Include clean trust messaging.
+
+---
+
+# 11. CREATOR DASHBOARD
+
+This is one of the most important screens.
+
+The dashboard should immediately answer:
+
+> How is my digital-product business doing?
+
+Show:
+
+### Overview metrics
+
+* Revenue
+* Orders
+* Customers
+* Products
+
+Include percentage/change indicators where appropriate.
+
+### Product performance
+
+Show:
+
+* Product
+* Views
+* Orders
+* Revenue
+* Conversion rate
+
+### Recent orders
+
+Show recent customer purchases.
+
+### AI recommendation
+
+Create a prominent but subtle AI card such as:
+
+> **SellFlow AI noticed something**
+
+> Your sales page gets visitors, but fewer people are reaching checkout. Consider strengthening your offer section.
+
+CTA:
+
+**Improve Sales Page**
+
+This should make AI feel genuinely useful.
+
+---
+
+# 12. PRODUCTS SCREEN
+
+Create a clean product management interface.
+
+Header:
+
+**Products**
+
+Supporting text:
+
+> Create, manage and sell your digital products.
+
+Primary CTA:
+
+**+ Create Product**
+
+Each product card/list row should show:
+
+* Cover
+* Product name
+* Type
+* Price
+* Status
+* Sales
+* Revenue
+* Last updated
+* Actions
+
+Statuses:
+
+* Draft
+* Published
+* Archived
+
+Include:
+
+* Search
+* Filter
+* Sort
+
+Empty state:
+
+> **Your first product starts here.**
+
+CTA:
+
+**Create Your First Product**
+
+---
+
+# 13. CREATE PRODUCT SCREEN
+
+This should feel extremely simple.
+
+Header:
+
+**Create Product**
+
+Description:
+
+> Add your product and we'll help you turn it into a sales page.
+
+Fields:
+
+### Product name
+
+### Description
+
+### Product type
+
+Initially:
+
+**PDF**
+
+### Price
+
+### Currency
+
+Support:
+
+* NGN
+* USD
+* GHS
+* KES
+* ZAR
+
+### Upload product
+
+Create a beautiful drag-and-drop PDF uploader.
+
+Show:
+
+> Drag your PDF here or click to upload
+
+Include:
+
+* File type
+* Maximum file size
+* Upload progress
+* Success state
+* Error state
+* Replace file
+* Remove file
+
+Primary CTA:
+
+**Continue**
+
+---
+
+# 14. PRODUCT DETAIL SCREEN
+
+Show:
+
+### Product overview
+
+* Product cover
+* Product name
+* Description
+* Price
+* Product type
+* File status
+* Publication status
+
+Primary actions:
+
+**Build Sales Page**
+
+**Publish**
+
+Secondary:
+
+**Edit Product**
+
+**Settings**
+
+Show a visual progress system:
+
+### Product setup
+
+✓ Product created
+
+✓ PDF uploaded
+
+○ Sales page created
+
+○ Payment connected
+
+○ Published
+
+This makes the entire process understandable.
+
+---
+
+# 15. AI PRODUCT ANALYSIS SCREEN
+
+This is one of SellFlow's defining experiences.
+
+When a creator uploads a product, SellFlow should visually communicate:
+
+> **We're understanding your product.**
+
+Create an AI analysis experience.
+
+Example:
+
+### Understanding your product
+
+SellFlow AI is analyzing your PDF to understand:
+
+✓ What the product teaches
+
+✓ Who it is for
+
+✓ The problem it solves
+
+✓ The transformation it provides
+
+✓ Key benefits
+
+✓ Important sections
+
+✓ Potential objections
+
+Use subtle progress animation.
+
+Do not make it look like a loading spinner.
+
+Make it feel intelligent.
+
+---
+
+# 16. AI INTERVIEW SCREEN
+
+After analyzing the product, the AI should ask only the questions it needs.
+
+Header:
+
+> **Let's make your sales page stronger.**
+
+Supporting text:
+
+> We've already learned a lot from your product. We just need a few details from you.
+
+Create a conversational wizard.
+
+Example:
+
+### Question 1
+
+**Who is this product specifically for?**
+
+Input:
+
+Large text field.
+
+Example placeholder:
+
+> "Beginner bakers who know how to make great cakes but struggle to get consistent orders."
+
+Buttons:
+
+**Back**
+
+**Skip**
+
+**Continue**
+
+Show progress:
+
+**2 of 6**
+
+Questions may include:
+
+* Who is this product for?
+* What is their biggest problem?
+* What do they want instead?
+* What makes your product different?
+* Do you have testimonials?
+* Do you offer a guarantee?
+
+The UI should feel conversational, not like a boring survey.
+
+---
+
+# 17. AI GENERATION EXPERIENCE
+
+After the interview:
+
+Show:
+
+> **Building your sales page...**
+
+Then visually show AI constructing:
+
+* Headline
+* Problem
+* Transformation
+* Benefits
+* What's inside
+* Audience
+* Offer
+* FAQ
+* CTA
+
+Use a beautiful generation state.
+
+Example:
+
+> Understanding your product ✓
+
+> Positioning your offer ✓
+
+> Writing your sales message ✓
+
+> Designing your page ✓
+
+> Preparing your checkout ✓
+
+Then:
+
+**Your sales page is ready.**
+
+CTA:
+
+**Review Sales Page**
+
+---
+
+# 18. SALES PAGE EDITOR
+
+This is one of the most important screens in the entire application.
+
+Design a professional visual editor.
+
+Desktop layout:
+
+### LEFT PANEL
+
+Section navigation.
+
+Example:
+
+* Hero
+* Problem
+* Transformation
+* Benefits
+* Features
+* What's Inside
+* Who It's For
+* Testimonials
+* About
+* Guarantee
+* FAQ
+* Offer
+* CTA
+
+Allow:
+
+* Reordering
+* Hiding/showing
+* Selecting sections
+
+### CENTER
+
+Large live sales-page preview.
+
+The preview should look like a real published landing page.
+
+### RIGHT PANEL
+
+Editing controls.
+
+When a section is selected, show relevant fields.
+
+Example:
+
+Hero:
+
+**Headline**
+
+**Subheadline**
+
+**CTA text**
+
+**Supporting text**
+
+Include:
+
+**Improve with AI**
+
+---
+
+# 19. AI IMPROVEMENT EXPERIENCE
+
+Every important text field should be able to use AI.
+
+Example:
+
+**Improve with AI**
+
+When clicked, show:
+
+### Make it...
+
+* Clearer
+* More persuasive
+* Shorter
+* More emotional
+* Simpler
+
+The AI should return a suggested version.
+
+Show:
+
+### Current
+
+and
+
+### Suggested
+
+Actions:
+
+**Accept**
+
+**Reject**
+
+This interaction should feel fast and useful.
+
+---
+
+# 20. SALES PAGE SECTION COMPONENTS
+
+Design reusable components for:
+
+### Hero
+
+Large headline.
+
+Supporting copy.
+
+CTA.
+
+Product visual.
+
+### Problem
+
+Pain points.
+
+### Transformation
+
+Before/after positioning.
+
+### Benefits
+
+Benefit cards.
+
+### Features
+
+Feature list.
+
+### What's Inside
+
+Product contents.
+
+### Audience
+
+Who this is for.
+
+### Testimonials
+
+Only real testimonials supplied by creator.
+
+### Creator
+
+Photo + bio.
+
+### Guarantee
+
+Guarantee section.
+
+### FAQ
+
+Accordion.
+
+### Offer
+
+Price + value + CTA.
+
+### Final CTA
+
+Strong closing section.
+
+---
+
+# 21. SALES PAGE DESIGN TEMPLATES
+
+Create the first template:
+
+## Premium
+
+This should feel sophisticated and conversion-focused.
+
+Also establish the design system so future templates can be added.
+
+Possible future templates:
+
+* Creator
+* Educational
+
+Do not build dozens of templates.
+
+Quality over quantity.
+
+---
+
+# 22. PUBLIC PRODUCT / SALES PAGE
+
+Route concept:
+
+`/p/[creatorSlug]/[productSlug]`
+
+Design the published sales page as a real customer-facing landing page.
+
+It should include:
+
+* Hero
+* Problem
+* Transformation
+* Benefits
+* What's inside
+* Audience
+* Testimonials if available
+* Creator
+* Guarantee if available
+* FAQ
+* Offer
+* CTA
+
+Primary CTA:
+
+**Get the Product**
+
+or AI-generated equivalent.
+
+Do not display creator dashboard UI.
+
+The public page should look like a professional standalone sales page.
+
+---
+
+# 23. CHECKOUT
+
+Create a minimal, high-trust checkout.
+
+Do not make checkout unnecessarily complicated.
+
+Show:
+
+### Order summary
+
+Product cover
+
+Product name
+
+Price
+
+### Customer information
+
+* Name
+* Email
+* Phone where necessary
+
+### Payment
+
+Payment provider interface placeholder.
+
+Primary CTA:
+
+**Pay ₦X**
+
+or equivalent currency.
+
+Show:
+
+* Secure payment
+* What happens after payment
+* Product delivery information
+
+Do not require customer account creation.
+
+---
+
+# 24. SUCCESS PAGE
+
+After payment:
+
+Create a strong confirmation screen.
+
+Example:
+
+> **You're all set.**
+
+> Your purchase was successful.
+
+Show:
+
+* Product name
+* Download button
+* Receipt information
+
+Primary CTA:
+
+**Download Product**
+
+Secondary:
+
+**Check your email**
+
+Also communicate that a copy has been sent to the customer's email.
+
+---
+
+# 25. CUSTOMER DATABASE
+
+Design:
+
+### Customers
+
+Show:
+
+* Name
+* Email
+* Products purchased
+* Total spent
+* Last purchase
+* Date joined
+
+Include:
+
+* Search
+* Filter
+* Customer details drawer/page
+
+Customer detail should show:
+
+* Purchases
+* Total revenue
+* Activity
+* Emails
+* Download history
+
+---
+
+# 26. LEADS
+
+Create a leads interface.
+
+Show:
+
+* Name
+* Email
+* Source
+* Lead magnet
+* Date captured
+* Status
+
+Include:
+
+**Create Lead Magnet**
+
+Lead magnet concept:
+
+> Give away something valuable to collect emails.
+
+---
+
+# 27. EMAILS
+
+Design an email management area.
+
+Sections:
+
+* Campaigns
+* Automations
+
+Campaign list:
+
+* Name
+* Subject
+* Status
+* Recipients
+* Sent date
+
+CTA:
+
+**Create Email**
+
+Email composer should include:
+
+* Subject
+* Preview text
+* Body
+* AI writing assistance
+* Send test
+* Schedule
+* Send
+
+AI action:
+
+**Write with AI**
+
+---
+
+# 28. AUTOMATIONS
+
+Create a simple automation builder.
+
+Do NOT make this look like a complex enterprise workflow system.
+
+Example:
+
+### New Lead
+
+↓
+
+Wait 1 day
+
+↓
+
+Send Email
+
+↓
+
+Wait 3 days
+
+↓
+
+Send Email
+
+↓
+
+Purchase?
+
+The interface should be visual and understandable.
+
+Initial triggers:
+
+* New lead
+* Purchase completed
+
+Actions:
+
+* Wait
+* Send email
+
+---
+
+# 29. ANALYTICS
+
+Create a clean analytics dashboard.
+
+Metrics:
+
+* Revenue
+* Orders
+* Page views
+* Checkout starts
+* Conversion rate
+* Downloads
+
+Charts:
+
+Revenue over time
+
+Orders over time
+
+Product performance
+
+Sales funnel:
+
+### Page View
+
+↓
+
+### Checkout
+
+↓
+
+### Purchase
+
+↓
+
+### Download
+
+Make the funnel visually obvious.
+
+---
+
+# 30. SETTINGS
+
+Design settings with categories:
+
+### Profile
+
+Name
+
+Email
+
+Creator/business name
+
+Avatar
+
+### Store
+
+Store name
+
+Slug
+
+Branding
+
+### Payments
+
+Payment provider connection
+
+### Notifications
+
+Email notifications
+
+### Account
+
+Password
+
+Security
+
+---
+
+# 31. COMPONENT LIBRARY
+
+Create reusable components in Figma.
+
+Include:
+
+### Navigation
+
+* Sidebar
+* Topbar
+* Mobile navigation
+* Breadcrumbs
+
+### Buttons
+
+* Primary
+* Secondary
+* Ghost
+* Destructive
+* Icon button
+* Loading button
+
+States:
+
+* Default
+* Hover
+* Active
+* Disabled
+* Loading
+
+### Forms
+
+* Text input
+* Textarea
+* Select
+* Combobox
+* Checkbox
+* Radio
+* Toggle
+* Currency input
+* Price input
+
+States:
+
+* Default
+* Focus
+* Error
+* Disabled
+* Success
+
+### Cards
+
+* Metric card
+* Product card
+* AI card
+* Pricing card
+* Information card
+
+### Feedback
+
+* Toast
+* Alert
+* Banner
+* Modal
+* Confirmation dialog
+
+### Data
+
+* Table
+* Tabs
+* Filters
+* Pagination
+* Empty states
+
+### Upload
+
+* Upload zone
+* Uploading
+* Success
+* Error
+
+### AI
+
+* AI button
+* AI suggestion card
+* AI generation state
+* AI analysis state
+* AI chat/interview
+* AI improvement modal
+
+### Sales Page
+
+* Hero
+* Benefits
+* Features
+* FAQ
+* Offer
+* CTA
+* Testimonial
+* Creator section
+
+---
+
+# 32. EMPTY STATES
+
+Every major area needs a thoughtful empty state.
+
+Examples:
+
+Products:
+
+> **Your first product starts here.**
+
+Customers:
+
+> **Your customers will appear here after your first sale.**
+
+Leads:
+
+> **Start collecting leads with a free resource.**
+
+Emails:
+
+> **Stay connected with your audience.**
+
+Analytics:
+
+> **Your sales data will appear here once you start selling.**
+
+Empty states should always include a useful next action.
+
+---
+
+# 33. LOADING STATES
+
+Design skeleton/loading states for:
+
+* Dashboard
+* Products
+* Product details
+* Sales page
+* Customers
+* Analytics
+
+Avoid generic spinners where a skeleton makes more sense.
+
+---
+
+# 34. ERROR STATES
+
+Design useful errors.
+
+Example:
+
+> **We couldn't upload your file.**
+
+> Make sure it's a PDF smaller than 50 MB.
+
+CTA:
+
+**Try Again**
+
+Also design:
+
+* Payment failure
+* AI generation failure
+* Network error
+* Unauthorized access
+* Missing product
+* Published page unavailable
+
+Never show technical errors to normal users.
+
+---
+
+# 35. RESPONSIVE DESIGN
+
+Design desktop and mobile states.
+
+Desktop target:
+
+1440px.
+
+Tablet:
+
+1024px.
+
+Mobile:
+
+390px.
+
+The mobile experience is important.
+
+The creator should be able to:
+
+* View products
+* Check sales
+* Edit product information
+* Review AI output
+* Preview sales page
+* View customers
+
+The sales page itself must be excellent on mobile.
+
+---
+
+# 36. MOBILE NAVIGATION
+
+On mobile, replace the desktop sidebar with a compact navigation system.
+
+Prioritize:
+
+* Dashboard
+* Products
+* Customers
+* More
+
+Keep **Create Product** highly visible.
+
+---
+
+# 37. PRODUCT STATUS SYSTEM
+
+Create consistent visual badges.
+
+### Draft
+
+Neutral.
+
+### Published
+
+Success.
+
+### Archived
+
+Muted.
+
+Use the same component everywhere.
+
+---
+
+# 38. AI VISUAL LANGUAGE
+
+AI is a core part of SellFlow.
+
+However, do not make everything look "AI generated."
+
+AI should feel:
+
+* Intelligent
+* Helpful
+* Subtle
+* Premium
+
+Use one consistent AI visual treatment.
+
+AI actions should be immediately recognizable.
+
+Examples:
+
+**✦ Improve with AI**
+
+**✦ Generate with AI**
+
+**✦ Ask SellFlow AI**
+
+Avoid excessive sparkle icons or futuristic effects.
+
+---
+
+# 39. ONBOARDING
+
+Design an initial onboarding experience.
+
+After signup:
+
+### Welcome to SellFlow
+
+> Let's get your first digital product ready to sell.
+
+Steps:
+
+1. Tell us about you
+2. Add your product
+3. Build your sales page
+4. Connect payment
+5. Publish
+
+Use a progress indicator.
+
+Keep onboarding short.
+
+---
+
+# 40. DESIGN THE "WOW MOMENT"
+
+The most important experience is:
+
+### Upload PDF
+
+↓
+
+### AI understands it
+
+↓
+
+### Answer a few questions
+
+↓
+
+### Sales page appears
+
+This should feel magical without feeling gimmicky.
+
+The creator should think:
+
+> **"Wait... SellFlow just built my sales page for me."**
+
+Design this experience beautifully.
+
+---
+
+# 41. INTERACTIONS / PROTOTYPE
+
+Create prototype interactions for the major user journey.
+
+At minimum:
+
+### Journey 1
+
+Homepage
+
+→ Sign up
+
+→ Dashboard
+
+→ Create Product
+
+→ Upload PDF
+
+→ AI Analysis
+
+→ AI Interview
+
+→ Generate
+
+→ Sales Page Editor
+
+### Journey 2
+
+Public Sales Page
+
+→ Checkout
+
+→ Payment
+
+→ Success
+
+→ Download
+
+### Journey 3
+
+Dashboard
+
+→ Products
+
+→ Product
+
+→ Sales Page
+
+### Journey 4
+
+Dashboard
+
+→ Customers
+
+→ Customer Detail
+
+Use realistic transitions.
+
+Do not over-animate.
+
+---
+
+# 42. REALISTIC CONTENT
+
+Do not use meaningless placeholder content such as:
+
+"Lorem ipsum."
+
+Use realistic African creator examples.
+
+Examples:
+
+### Product
+
+**The Cake Business Sales Playbook**
+
+Audience:
+
+> Talented home bakers who struggle to get consistent cake orders.
+
+Another:
+
+**Think Like a Consultant**
+
+Audience:
+
+> Business owners who want to solve complex business problems more strategically.
+
+Another:
+
+**The Korean Skin Care Guide**
+
+Use realistic product names and descriptions throughout the mockups.
+
+This will make the product feel real.
+
+---
+
+# 43. AFRICAN MARKET CONTEXT
+
+The product is built initially for African creators.
+
+However, do not make the UI look stereotypically "African."
+
+It should look globally competitive.
+
+Support:
+
+* Nigerian Naira
+* Ghanaian Cedi
+* Kenyan Shilling
+* South African Rand
+* US Dollar
+
+Use realistic Nigerian examples where useful.
+
+The product should communicate:
+
+> Built for African creators. Ready for the world.
+
+---
+
+# 44. ACCESSIBILITY
+
+Design with accessibility in mind.
+
+Ensure:
+
+* Strong text contrast
+* Readable font sizes
+* Clear focus states
+* Large enough click targets
+* Meaningful labels
+* Error messages near fields
+* Do not rely only on color to communicate status
+
+---
+
+# 45. DEVELOPER HANDOFF
+
+Organize the Figma file so an AI coding agent can understand it.
+
+Create pages such as:
+
+### 01 — Cover
+
+### 02 — Design System
+
+### 03 — Components
+
+### 04 — Public Website
+
+### 05 — Authentication
+
+### 06 — Dashboard
+
+### 07 — Products
+
+### 08 — AI Experience
+
+### 09 — Sales Page Builder
+
+### 10 — Public Sales Pages
+
+### 11 — Checkout
+
+### 12 — Customers & Leads
+
+### 13 — Email & Automations
+
+### 14 — Analytics
+
+### 15 — Settings
+
+### 16 — Mobile
+
+### 17 — Prototype Flows
+
+---
+
+# 46. COMPONENT NAMING
+
+Use consistent component names.
+
+Examples:
+
+`Button/Primary`
+
+`Button/Secondary`
+
+`Input/Text`
+
+`Input/Currency`
+
+`Card/Metric`
+
+`Card/Product`
+
+`Card/AI`
+
+`Badge/Status`
+
+`Navigation/Sidebar`
+
+`Navigation/Topbar`
+
+`SalesPage/Hero`
+
+`SalesPage/Benefits`
+
+`SalesPage/Offer`
+
+`AI/Generation`
+
+`AI/Improvement`
+
+This will make developer implementation much easier.
+
+---
+
+# 47. DO NOT DESIGN BACKEND
+
+Do not attempt to design:
+
+* Database implementation
+* Supabase configuration
+* API architecture
+* Payment processing logic
+* Webhook implementation
+* Storage implementation
+* Authentication backend
+* AI API implementation
+
+Those will be handled later by the coding agent.
+
+You are designing the **product interface and user experience**.
+
+---
+
+# 48. DO NOT OVERBUILD
+
+This is an MVP.
+
+Do not create unnecessary features just because they could be useful.
+
+Prioritize:
+
+**PRODUCT**
+
+→ **AI**
+
+→ **SALES PAGE**
+
+→ **CHECKOUT**
+
+→ **PAYMENT**
+
+→ **DELIVERY**
+
+Then:
+
+**LEADS**
+
+→ **EMAIL**
+
+→ **AUTOMATION**
+
+→ **ANALYTICS**
+
+Avoid designing:
+
+* Marketplace
+* Affiliate marketplace
+* Mobile app
+* Community
+* Course platform
+* Membership system
+* Complex CRM
+* Advanced WhatsApp automation
+* Advanced SMS
+* Enterprise team management
+* Complex funnel builder
+
+These can come later.
+
+---
+
+# 49. FINAL DESIGN QUALITY BAR
+
+Before completing the design, review the entire product as if you were a creator who has never used SellFlow.
+
+Ask:
+
+### Can I understand what SellFlow does within 5 seconds?
+
+### Can I create my first product without instructions?
+
+### Do I understand what the AI is doing?
+
+### Does the AI feel useful rather than decorative?
+
+### Can I clearly see how to get my product published?
+
+### Does the sales page editor feel easier than building a website?
+
+### Does checkout feel trustworthy?
+
+### Does the dashboard make sense immediately?
+
+### Does the entire product feel premium?
+
+### Does the experience feel significantly easier than using a collection of separate tools?
+
+If any answer is no, improve the design.
+
+---
+
+# 50. FINAL OUTPUT
+
+Create a complete high-fidelity Figma environment containing:
+
+1. Brand/design foundation
+2. Design tokens
+3. Typography system
+4. Color system
+5. Component library
+6. Responsive components
+7. Public website
+8. Authentication
+9. Creator dashboard
+10. Product creation
+11. Product management
+12. AI product analysis
+13. AI interview
+14. AI generation experience
+15. Sales page editor
+16. Sales page templates
+17. Public sales page
+18. Checkout
+19. Payment success
+20. Secure download experience
+21. Customers
+22. Leads
+23. Emails
+24. Automations
+25. Analytics
+26. Settings
+27. Empty states
+28. Loading states
+29. Error states
+30. Mobile screens
+31. Prototype flows
+32. Developer handoff organization
+
+The result should feel like a **real production SaaS product**, not a collection of wireframes.
+
+The most important thing is consistency.
+
+Every screen should feel like it belongs to the same product.
+
+The final emotional reaction should be:
+
+> **"This looks simple enough for anyone to use, but powerful enough to build a real digital-product business."**
+
+Remember:
+
+**Figma is creating the environment and design system.**
+
+**Kiro will later implement the actual application.**
+
+Design for that handoff.

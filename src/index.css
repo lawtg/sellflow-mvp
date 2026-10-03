@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-background: #F8F8FC;
+  --color-surface: #FFFFFF;
+  --color-border: #E4E4EF;
+  --color-text-primary: #0B0B18;
+  --color-text-secondary: #4E4E68;
+  --color-text-muted: #9292A8;
+
+  --color-brand: #5847F5;
+  --color-brand-hover: #4636E0;
+  --color-brand-light: #EEF0FF;
+  --color-brand-foreground: #FFFFFF;
+
+  --color-ai: #7C3AED;
+  --color-ai-light: #F0EBFF;
+
+  --color-success: #0CAF60;
+  --color-success-light: #E6F9F0;
+  --color-warning: #F59E0B;
+  --color-warning-light: #FEF3C7;
+  --color-error: #EF4444;
+  --color-error-light: #FEE2E2;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #F8F8FC;
+  color: #0B0B18;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #D1D1E0;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: #ADADC4; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
