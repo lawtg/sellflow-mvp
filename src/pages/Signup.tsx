@@ -1,6 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { Zap, Eye, EyeOff, AlertCircle, Loader2, Check } from "lucide-react";
+import { supabase } from "../lib/supabase";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ export default function Signup() {
 
   const validate = () => {
     if (!fullName.trim()) return "Please enter your full name.";
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address.";
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      return "Please enter a valid email address.";
     if (!businessName.trim()) return "Please enter your creator or business name.";
     if (password.length < 8) return "Password must be at least 8 characters.";
     return "";
@@ -39,10 +41,50 @@ export default function Signup() {
     if (err) { setError(err); return; }
     setError("");
     setLoading(true);
-    // Simulate auth — replace with Supabase signUp
-    await new Promise(r => setTimeout(r, 1400));
-    setLoading(false);
-    navigate("/onboarding");
+
+    const { data, error: authError } = await supabase.auth.signUp({
+      email: email.trim().toLowerCase(),
+      password,
+      options: {
+        data: {
+          full_name: fullName.trim(),
+          business_name: businessName.trim(),
+        },
+        // emailRedirectTo used when email confirmation is enabled
+        emailRedirectTo: `${window.location.origin}/dashboard`,
+      },
+    });
+
+    if (authError) {
+      setLoading(false);
+      if (authError.message.toLowerCase().includes("already registered")) {
+        setError("An account with this email already exists. Try logging in instead.");
+      } else {
+        setError(authError.message);
+      }
+      return;
+    }
+
+    // If email confirmation is disabled in Supabase (recommended for MVP),
+    // the user is immediately logged in and we go to onboarding.
+    // If email confirmation is enabled, data.user exists but session is null.
+    if (data.session) {
+      setLoading(false);
+      navigate("/onboarding");
+    } else {
+      // Email confirmation required — show a message
+      setLoading(false);
+      setError(""); // clear any errors
+      navigate("/signup-confirm", { state: { email } });
+    }
+  };
+
+  const handleGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/onboarding` },
+    });
+    if (error) setError(error.message);
   };
 
   return (
@@ -60,9 +102,10 @@ export default function Signup() {
           <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Create your account</h1>
           <p className="text-[13.5px] text-[#9292A8] mb-6">Free forever. No credit card required.</p>
 
-          {/* Google */}
+          {/* Google OAuth */}
           <button
             type="button"
+            onClick={handleGoogle}
             className="w-full flex items-center justify-center gap-2.5 border border-[#E4E4EF] rounded-xl py-2.5 text-[13.5px] font-500 text-[#0B0B18] hover:bg-[#F8F8FC] transition-colors mb-4"
           >
             <svg width="16" height="16" viewBox="0 0 24 24">
@@ -95,6 +138,7 @@ export default function Signup() {
                 value={fullName}
                 onChange={e => { setFullName(e.target.value); setError(""); }}
                 placeholder="Ola Adeyemi"
+                autoComplete="name"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
               />
             </div>
@@ -105,6 +149,7 @@ export default function Signup() {
                 value={email}
                 onChange={e => { setEmail(e.target.value); setError(""); }}
                 placeholder="you@example.com"
+                autoComplete="email"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
               />
             </div>
@@ -115,6 +160,7 @@ export default function Signup() {
                 value={businessName}
                 onChange={e => { setBusinessName(e.target.value); setError(""); }}
                 placeholder="Ola Creates"
+                autoComplete="organization"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
               />
             </div>
@@ -126,6 +172,7 @@ export default function Signup() {
                   value={password}
                   onChange={e => { setPassword(e.target.value); setError(""); }}
                   placeholder="Min. 8 characters"
+                  autoComplete="new-password"
                   className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
                 />
                 <button
@@ -159,7 +206,9 @@ export default function Signup() {
               disabled={loading}
               className="w-full bg-[#5847F5] hover:bg-[#4636E0] disabled:opacity-60 disabled:cursor-not-allowed text-white font-600 py-3 rounded-xl text-[14px] transition-colors flex items-center justify-center gap-2 mt-1"
             >
-              {loading ? <><Loader2 size={16} className="animate-spin" />Creating account…</> : "Create Account — Free"}
+              {loading
+                ? <><Loader2 size={16} className="animate-spin" />Creating account…</>
+                : "Create Account — Free"}
             </button>
           </form>
 
@@ -169,7 +218,6 @@ export default function Signup() {
             <a href="#" className="text-[#5847F5] hover:underline">Privacy Policy</a>.
           </p>
 
-          {/* Trust badges */}
           <div className="flex items-center justify-center gap-4 mt-4">
             {["Free forever plan", "No credit card", "Cancel anytime"].map(t => (
               <div key={t} className="flex items-center gap-1 text-[11px] text-[#9292A8]">

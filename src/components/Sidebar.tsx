@@ -1,23 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
-  LayoutDashboard,
-  Package,
-  Users,
-  Magnet,
-  Mail,
-  BarChart2,
-  Settings,
-  Plus,
-  Zap,
-  X,
-  ChevronDown,
-  LogOut,
-  User,
-  Bell,
-  Zap as ZapIcon,
-  Workflow,
+  LayoutDashboard, Package, Users, Magnet, Mail, BarChart2,
+  Settings, Plus, Zap, X, ChevronDown, LogOut, User,
+  Bell, Zap as ZapIcon, Workflow,
 } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
 const nav = [
   { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
@@ -35,15 +23,30 @@ interface SidebarProps {
 
 export default function Sidebar({ onClose }: SidebarProps) {
   const navigate = useNavigate();
+  const { user, profile, signOut } = useAuth();
   const [userOpen, setUserOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
 
-  const notifications = [
-    { text: "New sale — The Cake Business Playbook", time: "3 min ago", unread: true },
-    { text: "Chidi Nwosu purchased Think Like a Consultant", time: "14 min ago", unread: true },
-    { text: "Your weekly summary is ready", time: "2 hrs ago", unread: false },
-  ];
+  // Derive display values from real auth data
+  const displayName = profile?.full_name || user?.user_metadata?.full_name || "Creator";
+  const displayEmail = user?.email || "";
+  const initials = displayName
+    .split(" ")
+    .map((n: string) => n[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
+  const handleSignOut = async () => {
+    setUserOpen(false);
+    await signOut();
+    navigate("/login");
+  };
+
+  // Static notifications for MVP — replace with real Supabase query later
+  const notifications = [
+    { text: "Welcome to Sellfinix! Create your first product.", time: "just now", unread: true },
+  ];
   const unreadCount = notifications.filter(n => n.unread).length;
 
   return (
@@ -56,12 +59,8 @@ export default function Sidebar({ onClose }: SidebarProps) {
           </div>
           <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
         </div>
-        {/* Mobile close */}
         {onClose && (
-          <button
-            onClick={onClose}
-            className="lg:hidden text-[#9292A8] hover:text-[#4E4E68] transition-colors"
-          >
+          <button onClick={onClose} className="lg:hidden text-[#9292A8] hover:text-[#4E4E68]">
             <X size={16} />
           </button>
         )}
@@ -71,7 +70,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
       <div className="px-3 pt-4 pb-2">
         <button
           onClick={() => { navigate("/products/create"); onClose?.(); }}
-          className="w-full flex items-center justify-center gap-2 bg-[#5847F5] hover:bg-[#4636E0] text-white text-[13px] font-600 py-2.5 rounded-lg transition-colors duration-150"
+          className="w-full flex items-center justify-center gap-2 bg-[#5847F5] hover:bg-[#4636E0] text-white text-[13px] font-600 py-2.5 rounded-lg transition-colors"
         >
           <Plus size={15} strokeWidth={2.5} />
           Create Product
@@ -86,10 +85,8 @@ export default function Sidebar({ onClose }: SidebarProps) {
             to={to}
             onClick={() => onClose?.()}
             className={({ isActive }) =>
-              `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13.5px] font-500 transition-colors duration-100 ${
-                isActive
-                  ? "bg-[#EEF0FF] text-[#5847F5]"
-                  : "text-[#4E4E68] hover:bg-[#F4F4F8] hover:text-[#0B0B18]"
+              `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13.5px] font-500 transition-colors ${
+                isActive ? "bg-[#EEF0FF] text-[#5847F5]" : "text-[#4E4E68] hover:bg-[#F4F4F8] hover:text-[#0B0B18]"
               }`
             }
           >
@@ -105,10 +102,8 @@ export default function Sidebar({ onClose }: SidebarProps) {
           to="/settings"
           onClick={() => onClose?.()}
           className={({ isActive }) =>
-            `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13.5px] font-500 transition-colors duration-100 ${
-              isActive
-                ? "bg-[#EEF0FF] text-[#5847F5]"
-                : "text-[#4E4E68] hover:bg-[#F4F4F8] hover:text-[#0B0B18]"
+            `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13.5px] font-500 transition-colors ${
+              isActive ? "bg-[#EEF0FF] text-[#5847F5]" : "text-[#4E4E68] hover:bg-[#F4F4F8] hover:text-[#0B0B18]"
             }`
           }
         >
@@ -116,7 +111,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
           Settings
         </NavLink>
 
-        {/* Notifications bell */}
+        {/* Notifications */}
         <div className="relative">
           <button
             onClick={() => { setNotifOpen(!notifOpen); setUserOpen(false); }}
@@ -132,14 +127,13 @@ export default function Sidebar({ onClose }: SidebarProps) {
             </div>
             Notifications
           </button>
-
           {notifOpen && (
             <div className="absolute bottom-full left-0 right-0 mb-1 bg-white border border-[#E4E4EF] rounded-xl shadow-lg z-50 overflow-hidden">
               <div className="px-3 py-2 border-b border-[#F4F4F8]">
                 <div className="text-[11.5px] font-700 text-[#0B0B18]">Notifications</div>
               </div>
               {notifications.map((n, i) => (
-                <div key={i} className={`px-3 py-2.5 border-b border-[#F4F4F8] last:border-none ${n.unread ? "bg-[#FAFAFF]" : ""}`}>
+                <div key={i} className={`px-3 py-2.5 ${n.unread ? "bg-[#FAFAFF]" : ""}`}>
                   <div className="flex items-start gap-2">
                     {n.unread && <div className="w-1.5 h-1.5 rounded-full bg-[#5847F5] mt-1 shrink-0" />}
                     <div className={n.unread ? "" : "ml-3.5"}>
@@ -157,33 +151,32 @@ export default function Sidebar({ onClose }: SidebarProps) {
         <div className="mx-1 mb-1 mt-1 px-3 py-2 bg-[#F0EBFF] rounded-lg flex items-center gap-2">
           <ZapIcon size={13} className="text-[#7C3AED] shrink-0" />
           <div className="flex-1 min-w-0">
-            <div className="text-[11px] font-700 text-[#7C3AED]">Creator plan</div>
+            <div className="text-[11px] font-700 text-[#7C3AED]">
+              {profile?.plan_id === "pro" ? "Pro plan" : profile?.plan_id === "creator" ? "Creator plan" : "Free plan"}
+            </div>
             <button
               onClick={() => navigate("/pricing")}
               className="text-[10px] text-[#9292A8] hover:text-[#7C3AED] transition-colors"
             >
-              Upgrade to Pro →
+              Upgrade →
             </button>
           </div>
         </div>
 
-        {/* User section */}
+        {/* User dropdown */}
         <div className="relative">
           <button
             onClick={() => { setUserOpen(!userOpen); setNotifOpen(false); }}
-            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-[#F4F4F8] transition-colors group"
+            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-[#F4F4F8] transition-colors"
           >
             <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#5847F5] to-[#7C3AED] flex items-center justify-center text-white text-[11px] font-700 shrink-0">
-              OA
+              {initials}
             </div>
             <div className="flex-1 min-w-0 text-left">
-              <div className="text-[12px] font-600 text-[#0B0B18] truncate">Ola Adeyemi</div>
-              <div className="text-[11px] text-[#9292A8] truncate">ola@example.com</div>
+              <div className="text-[12px] font-600 text-[#0B0B18] truncate">{displayName}</div>
+              <div className="text-[11px] text-[#9292A8] truncate">{displayEmail}</div>
             </div>
-            <ChevronDown
-              size={13}
-              className={`text-[#9292A8] shrink-0 transition-transform ${userOpen ? "rotate-180" : ""}`}
-            />
+            <ChevronDown size={13} className={`text-[#9292A8] shrink-0 transition-transform ${userOpen ? "rotate-180" : ""}`} />
           </button>
 
           {userOpen && (
@@ -197,7 +190,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
               </button>
               <div className="border-t border-[#F4F4F8]" />
               <button
-                onClick={() => { navigate("/login"); setUserOpen(false); }}
+                onClick={handleSignOut}
                 className="w-full flex items-center gap-2.5 px-3 py-2.5 text-[13px] font-500 text-[#EF4444] hover:bg-[#FEE2E2] transition-colors"
               >
                 <LogOut size={14} />

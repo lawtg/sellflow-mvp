@@ -1,11 +1,15 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Sparkles, Eye, EyeOff, Zap, AlertCircle, Loader2 } from "lucide-react";
+import { supabase } from "../lib/supabase";
 
 type Mode = "login" | "forgot" | "forgot-sent";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || "/dashboard";
+
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,10 +32,28 @@ export default function Login() {
     if (err) { setError(err); return; }
     setError("");
     setLoading(true);
-    // Simulate auth — replace with Supabase signIn
-    await new Promise(r => setTimeout(r, 1200));
+
+    const { error: authError } = await supabase.auth.signInWithPassword({
+      email: email.trim().toLowerCase(),
+      password,
+    });
+
     setLoading(false);
-    navigate("/dashboard");
+
+    if (authError) {
+      if (authError.message.toLowerCase().includes("invalid login")) {
+        setError("Incorrect email or password. Please try again.");
+      } else if (authError.message.toLowerCase().includes("email not confirmed")) {
+        setError("Please verify your email address before logging in. Check your inbox.");
+      } else {
+        setError(authError.message);
+      }
+      return;
+    }
+
+    // AuthProvider's onAuthStateChange will update the session.
+    // ProtectedRoute will then let the user through to their intended page.
+    navigate(from, { replace: true });
   };
 
   const handleForgot = async (e: React.FormEvent) => {
@@ -42,9 +64,28 @@ export default function Login() {
     }
     setError("");
     setLoading(true);
-    await new Promise(r => setTimeout(r, 1000));
+
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(
+      forgotEmail.trim().toLowerCase(),
+      { redirectTo: `${window.location.origin}/reset-password` }
+    );
+
     setLoading(false);
+
+    if (resetError) {
+      setError(resetError.message);
+      return;
+    }
+
     setMode("forgot-sent");
+  };
+
+  const handleGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/dashboard` },
+    });
+    if (error) setError(error.message);
   };
 
   return (
@@ -64,9 +105,10 @@ export default function Login() {
             <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Welcome back</h1>
             <p className="text-[13.5px] text-[#9292A8] mb-6">Sign in to your Sellfinix account.</p>
 
-            {/* Google */}
+            {/* Google OAuth */}
             <button
               type="button"
+              onClick={handleGoogle}
               className="w-full flex items-center justify-center gap-2.5 border border-[#E4E4EF] rounded-xl py-2.5 text-[13.5px] font-500 text-[#0B0B18] hover:bg-[#F8F8FC] transition-colors mb-4"
             >
               <svg width="16" height="16" viewBox="0 0 24 24">
@@ -99,6 +141,7 @@ export default function Login() {
                   value={email}
                   onChange={e => { setEmail(e.target.value); setError(""); }}
                   placeholder="you@example.com"
+                  autoComplete="email"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
                 />
               </div>
@@ -119,6 +162,7 @@ export default function Login() {
                     value={password}
                     onChange={e => { setPassword(e.target.value); setError(""); }}
                     placeholder="••••••••"
+                    autoComplete="current-password"
                     className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
                   />
                   <button
@@ -142,9 +186,7 @@ export default function Login() {
 
             <p className="text-center text-[12.5px] text-[#9292A8] mt-5">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-[#5847F5] font-600 hover:underline">
-                Sign up free
-              </Link>
+              <Link to="/signup" className="text-[#5847F5] font-600 hover:underline">Sign up free</Link>
             </p>
 
             <div className="flex items-center justify-center gap-1.5 mt-5 text-[11.5px] text-[#9292A8]">
@@ -164,9 +206,7 @@ export default function Login() {
               ← Back to login
             </button>
             <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Reset your password</h1>
-            <p className="text-[13.5px] text-[#9292A8] mb-6">
-              Enter your email and we'll send you a reset link.
-            </p>
+            <p className="text-[13.5px] text-[#9292A8] mb-6">Enter your email and we'll send you a reset link.</p>
 
             {error && (
               <div className="flex items-center gap-2 bg-[#FEE2E2] text-[#EF4444] text-[12.5px] font-500 px-3.5 py-2.5 rounded-xl mb-4">
@@ -183,6 +223,7 @@ export default function Login() {
                   value={forgotEmail}
                   onChange={e => { setForgotEmail(e.target.value); setError(""); }}
                   placeholder="you@example.com"
+                  autoComplete="email"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
                 />
               </div>
@@ -206,9 +247,7 @@ export default function Login() {
               </svg>
             </div>
             <h1 className="text-[20px] font-800 text-[#0B0B18] tracking-tight mb-2">Check your inbox</h1>
-            <p className="text-[13.5px] text-[#4E4E68] mb-1">
-              We sent a password reset link to
-            </p>
+            <p className="text-[13.5px] text-[#4E4E68] mb-1">We sent a password reset link to</p>
             <p className="text-[13.5px] font-700 text-[#0B0B18] mb-6">{forgotEmail}</p>
             <button
               onClick={() => { setMode("login"); setError(""); }}
@@ -218,10 +257,7 @@ export default function Login() {
             </button>
             <p className="text-[12px] text-[#9292A8] mt-4">
               Didn't receive it?{" "}
-              <button
-                onClick={() => setMode("forgot")}
-                className="text-[#5847F5] hover:underline font-500"
-              >
+              <button onClick={() => setMode("forgot")} className="text-[#5847F5] hover:underline font-500">
                 Try again
               </button>
             </p>

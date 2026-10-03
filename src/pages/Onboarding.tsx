@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Check, Zap, ArrowRight, Sparkles } from "lucide-react";
+import { Check, Zap, ArrowRight, Sparkles, Loader2, AlertCircle } from "lucide-react";
+import { supabase } from "../lib/supabase";
+import { useAuth } from "../context/AuthContext";
 
 const categories = [
   { id: "business", label: "Business & Finance", emoji: "💼" },
@@ -30,13 +32,28 @@ const countries = [
   "Zimbabwe", "Zambia", "Other",
 ];
 
+/** Turn a creator name into a URL-safe slug, e.g. "Ola Creates" → "ola-creates" */
+function toSlug(name: string) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export default function Onboarding() {
   const navigate = useNavigate();
+  const { user, refreshProfile } = useAuth();
+
   const [step, setStep] = useState(0);
-  const [storeName, setStoreName] = useState("");
+  const [storeName, setStoreName] = useState(
+    (user?.user_metadata?.business_name as string) || ""
+  );
   const [country, setCountry] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
 
   const steps = [
     { label: "About you" },
@@ -44,6 +61,47 @@ export default function Onboarding() {
     { label: "Product type" },
     { label: "Ready" },
   ];
+
+  /** Upsert the profile row and refresh context, then proceed to step 3 */
+  const saveProfile = async () => {
+    if (!user) return;
+    setSaving(true);
+    setSaveError("");
+
+    const slug = toSlug(storeName);
+    const fullName = (user.user_metadata?.full_name as string) || storeName;
+
+    const { error } = await supabase.from("profiles").upsert(
+      {
+        user_id: user.id,
+        full_name: fullName,
+        business_name: storeName,
+        slug,
+        country: country || null,
+        plan_id: "free",
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id" }
+    );
+
+    setSaving(false);
+
+    if (error) {
+      // Slug collision — suggest a variant
+      if (error.message.includes("profiles_slug_key")) {
+        setSaveError(
+          `The URL "${slug}" is already taken. Try a different store name.`
+        );
+      } else {
+        setSaveError(error.message);
+      }
+      return;
+    }
+
+    // Refresh the AuthContext so ProtectedRoute sees the new profile
+    await refreshProfile();
+    setStep(3);
+  };
 
   return (
     <div className="min-h-screen bg-[#F8F8FC] flex flex-col items-center justify-center px-4 py-10">
@@ -61,7 +119,9 @@ export default function Onboarding() {
           {steps.map((s, i) => (
             <div key={s.label} className="flex-1 flex flex-col gap-1">
               <div className={`h-1 rounded-full transition-colors ${i <= step ? "bg-[#5847F5]" : "bg-[#E4E4EF]"}`} />
-              <div className={`text-[10.5px] font-500 ${i === step ? "text-[#5847F5]" : "text-[#C0C0D0]"}`}>{s.label}</div>
+              <div className={`text-[10.5px] font-500 ${i === step ? "text-[#5847F5]" : "text-[#C0C0D0]"}`}>
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
@@ -69,22 +129,38 @@ export default function Onboarding() {
         {/* ── STEP 0: About you ── */}
         {step === 0 && (
           <div className="bg-white rounded-2xl border border-[#E4E4EF] p-7">
-            <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Welcome to Sellfinix 🎉</h1>
-            <p className="text-[13.5px] text-[#9292A8] mb-6">Let's set up your creator store. This takes under 2 minutes.</p>
+            <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">
+              Welcome to Sellfinix 🎉
+            </h1>
+            <p className="text-[13.5px] text-[#9292A8] mb-6">
+              Let's set up your creator store. This takes under 2 minutes.
+            </p>
+
+            {saveError && (
+              <div className="flex items-center gap-2 bg-[#FEE2E2] text-[#EF4444] text-[12.5px] font-500 px-3.5 py-2.5 rounded-xl mb-4">
+                <AlertCircle size={13} className="shrink-0" />
+                {saveError}
+              </div>
+            )}
 
             <div className="space-y-4">
               <div>
-                <label className="block text-[12px] font-600 text-[#0B0B18] mb-1.5">Your store / creator name</label>
+                <label className="block text-[12px] font-600 text-[#0B0B18] mb-1.5">
+                  Your store / creator name
+                </label>
                 <input
                   type="text"
                   value={storeName}
-                  onChange={e => setStoreName(e.target.value)}
+                  onChange={e => { setStoreName(e.target.value); setSaveError(""); }}
                   placeholder="e.g. Ola Creates"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E4EF] text-[13.5px] focus:outline-none focus:border-[#5847F5] focus:ring-2 focus:ring-[#5847F5]/10 transition-colors"
                 />
                 {storeName && (
                   <div className="text-[11.5px] text-[#9292A8] mt-1">
-                    Your store URL: <span className="font-600 text-[#5847F5]">sellfinix.co/{storeName.toLowerCase().replace(/\s+/g, "-")}</span>
+                    Your store URL:{" "}
+                    <span className="font-600 text-[#5847F5]">
+                      sellfinix.co/{toSlug(storeName)}
+                    </span>
                   </div>
                 )}
               </div>
@@ -102,7 +178,9 @@ export default function Onboarding() {
             </div>
 
             <div className="mt-6 space-y-2">
-              <div className="text-[11.5px] font-600 text-[#9292A8] uppercase tracking-widest mb-3">What you can do with Sellfinix</div>
+              <div className="text-[11.5px] font-600 text-[#9292A8] uppercase tracking-widest mb-3">
+                What you can do with Sellfinix
+              </div>
               {[
                 "Upload your digital product",
                 "AI builds your sales page",
@@ -132,7 +210,9 @@ export default function Onboarding() {
         {step === 1 && (
           <div className="bg-white rounded-2xl border border-[#E4E4EF] p-7">
             <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">What's your niche?</h1>
-            <p className="text-[13.5px] text-[#9292A8] mb-5">This helps Sellfinix AI write better copy for your products.</p>
+            <p className="text-[13.5px] text-[#9292A8] mb-5">
+              This helps Sellfinix AI write better copy for your products.
+            </p>
 
             <div className="grid grid-cols-2 gap-2.5">
               {categories.map(({ id, label, emoji }) => (
@@ -152,9 +232,13 @@ export default function Onboarding() {
             </div>
 
             <div className="flex items-center justify-between mt-6">
-              <button onClick={() => setStep(0)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68]">← Back</button>
+              <button onClick={() => setStep(0)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68]">
+                ← Back
+              </button>
               <div className="flex items-center gap-2">
-                <button onClick={() => setStep(2)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68] px-3">Skip</button>
+                <button onClick={() => setStep(2)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68] px-3">
+                  Skip
+                </button>
                 <button
                   onClick={() => setStep(2)}
                   disabled={!selectedCat}
@@ -170,7 +254,9 @@ export default function Onboarding() {
         {/* ── STEP 2: Product type ── */}
         {step === 2 && (
           <div className="bg-white rounded-2xl border border-[#E4E4EF] p-7">
-            <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">What will you sell first?</h1>
+            <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">
+              What will you sell first?
+            </h1>
             <p className="text-[13.5px] text-[#9292A8] mb-5">You can always add more types later.</p>
 
             <div className="space-y-2.5">
@@ -186,7 +272,9 @@ export default function Onboarding() {
                 >
                   <span className="text-[22px] shrink-0">{emoji}</span>
                   <div>
-                    <div className={`text-[13.5px] font-600 ${selectedType === id ? "text-[#5847F5]" : "text-[#0B0B18]"}`}>{label}</div>
+                    <div className={`text-[13.5px] font-600 ${selectedType === id ? "text-[#5847F5]" : "text-[#0B0B18]"}`}>
+                      {label}
+                    </div>
                     <div className="text-[12px] text-[#9292A8]">{desc}</div>
                   </div>
                   {selectedType === id && (
@@ -199,15 +287,23 @@ export default function Onboarding() {
             </div>
 
             <div className="flex items-center justify-between mt-6">
-              <button onClick={() => setStep(1)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68]">← Back</button>
+              <button onClick={() => setStep(1)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68]">
+                ← Back
+              </button>
               <div className="flex items-center gap-2">
-                <button onClick={() => setStep(3)} className="text-[13px] text-[#9292A8] hover:text-[#4E4E68] px-3">Skip</button>
                 <button
-                  onClick={() => setStep(3)}
-                  disabled={!selectedType}
+                  onClick={saveProfile}
+                  className="text-[13px] text-[#9292A8] hover:text-[#4E4E68] px-3 disabled:opacity-40"
+                  disabled={saving}
+                >
+                  Skip
+                </button>
+                <button
+                  onClick={saveProfile}
+                  disabled={!selectedType || saving}
                   className="flex items-center gap-2 bg-[#5847F5] hover:bg-[#4636E0] disabled:opacity-50 disabled:cursor-not-allowed text-white font-600 px-5 py-2.5 rounded-xl text-[13.5px] transition-colors"
                 >
-                  Continue <ArrowRight size={14} />
+                  {saving ? <><Loader2 size={14} className="animate-spin" /> Saving…</> : <>Continue <ArrowRight size={14} /></>}
                 </button>
               </div>
             </div>
