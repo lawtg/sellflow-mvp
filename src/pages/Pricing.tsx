@@ -16,7 +16,7 @@ const plans = [
       "Instant PDF delivery",
       "Basic analytics",
       "Paystack integration",
-      "SellFlow branding",
+      "Sellfinix branding",
     ],
     notIncluded: ["Custom domain", "Email campaigns", "Lead magnets", "Automations", "Priority support"],
     cta: "Get started free",
@@ -39,7 +39,7 @@ const plans = [
       "Customer database",
       "Lead magnets",
       "Custom domain",
-      "Remove SellFlow branding",
+      "Remove Sellfinix branding",
     ],
     notIncluded: ["Email automations", "Priority support", "Webhooks"],
     cta: "Start 14-day free trial",
@@ -91,7 +91,7 @@ const faqs = [
   { q: "What currencies can I sell in?", a: "Nigerian Naira (₦), Ghanaian Cedi (₵), Kenyan Shilling (Ksh), South African Rand (R), and US Dollar ($). More currencies are being added." },
   { q: "Can I upgrade or downgrade?", a: "Yes, any time. If you upgrade, you're billed the prorated difference. If you downgrade, changes take effect at the next billing cycle." },
   { q: "What happens when I hit the 10-sale limit on Free?", a: "Your sales page stays live but new checkout attempts are paused. Upgrade to Creator to remove all limits instantly." },
-  { q: "How does the transaction fee work?", a: "SellFlow charges 0% platform fee. You only pay the payment provider's standard processing fee (typically 1.5% for Paystack)." },
+  { q: "How does the transaction fee work?", a: "Sellfinix charges 0% platform fee. You only pay the payment provider's standard processing fee (typically 1.5% for Paystack)." },
 ];
 
 export default function Pricing() {
@@ -108,7 +108,7 @@ export default function Pricing() {
             <div className="w-7 h-7 rounded-lg bg-[#5847F5] flex items-center justify-center">
               <Zap size={14} className="text-white" strokeWidth={2.5} />
             </div>
-            <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">SellFlow</span>
+            <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
           </Link>
           <div className="flex items-center gap-3">
             <button onClick={() => navigate("/login")} className="text-[13.5px] font-500 text-[#4E4E68] hover:text-[#0B0B18]">Log in</button>
@@ -205,7 +205,7 @@ export default function Pricing() {
           </div>
 
           <p className="text-center text-[13px] text-[#9292A8] mt-6">
-            All plans include 0% SellFlow platform fee · You only pay your payment provider's standard processing fee
+            All plans include 0% Sellfinix platform fee · You only pay your payment provider's standard processing fee
           </p>
         </div>
       </section>
@@ -294,9 +294,9 @@ export default function Pricing() {
             <div className="w-6 h-6 rounded-lg bg-[#5847F5] flex items-center justify-center">
               <Zap size={12} className="text-white" strokeWidth={2.5} />
             </div>
-            <span className="text-[14px] font-700 text-white">SellFlow</span>
+            <span className="text-[14px] font-700 text-white">Sellfinix</span>
           </div>
-          <div className="text-[12.5px] text-[#4E4E68]">© 2026 SellFlow · Built for African creators, ready for the world.</div>
+          <div className="text-[12.5px] text-[#4E4E68]">© 2026 Sellfinix · Built for African creators, ready for the world.</div>
         </div>
       </footer>
     </div>

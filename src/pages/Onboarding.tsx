@@ -52,7 +52,7 @@ export default function Onboarding() {
         <div className="w-7 h-7 rounded-lg bg-[#5847F5] flex items-center justify-center">
           <Zap size={14} className="text-white" strokeWidth={2.5} />
         </div>
-        <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">SellFlow</span>
+        <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
       </div>
 
       <div className="w-full max-w-lg">
@@ -69,7 +69,7 @@ export default function Onboarding() {
         {/* ── STEP 0: About you ── */}
         {step === 0 && (
           <div className="bg-white rounded-2xl border border-[#E4E4EF] p-7">
-            <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Welcome to SellFlow 🎉</h1>
+            <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Welcome to Sellfinix 🎉</h1>
             <p className="text-[13.5px] text-[#9292A8] mb-6">Let's set up your creator store. This takes under 2 minutes.</p>
 
             <div className="space-y-4">
@@ -84,7 +84,7 @@ export default function Onboarding() {
                 />
                 {storeName && (
                   <div className="text-[11.5px] text-[#9292A8] mt-1">
-                    Your store URL: <span className="font-600 text-[#5847F5]">sellflow.co/{storeName.toLowerCase().replace(/\s+/g, "-")}</span>
+                    Your store URL: <span className="font-600 text-[#5847F5]">sellfinix.co/{storeName.toLowerCase().replace(/\s+/g, "-")}</span>
                   </div>
                 )}
               </div>
@@ -102,7 +102,7 @@ export default function Onboarding() {
             </div>
 
             <div className="mt-6 space-y-2">
-              <div className="text-[11.5px] font-600 text-[#9292A8] uppercase tracking-widest mb-3">What you can do with SellFlow</div>
+              <div className="text-[11.5px] font-600 text-[#9292A8] uppercase tracking-widest mb-3">What you can do with Sellfinix</div>
               {[
                 "Upload your digital product",
                 "AI builds your sales page",
@@ -132,7 +132,7 @@ export default function Onboarding() {
         {step === 1 && (
           <div className="bg-white rounded-2xl border border-[#E4E4EF] p-7">
             <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">What's your niche?</h1>
-            <p className="text-[13.5px] text-[#9292A8] mb-5">This helps SellFlow AI write better copy for your products.</p>
+            <p className="text-[13.5px] text-[#9292A8] mb-5">This helps Sellfinix AI write better copy for your products.</p>
 
             <div className="grid grid-cols-2 gap-2.5">
               {categories.map(({ id, label, emoji }) => (
@@ -224,13 +224,13 @@ export default function Onboarding() {
               {storeName ? `${storeName} is ready!` : "Your store is ready!"}
             </h1>
             <p className="text-[14px] text-[#4E4E68] leading-relaxed mb-7">
-              Your SellFlow account is set up. Now let's create your first product and build a sales page with AI.
+              Your Sellfinix account is set up. Now let's create your first product and build a sales page with AI.
             </p>
 
             <div className="bg-[#F8F8FC] rounded-xl p-4 mb-6 space-y-2.5 text-left">
               {[
                 "Upload your PDF or digital product",
-                "SellFlow AI analyzes it and asks you 7 questions",
+                "Sellfinix AI analyzes it and asks you 7 questions",
                 "AI builds your complete sales page in seconds",
                 "Connect Paystack and publish — start selling",
               ].map((item, i) => (

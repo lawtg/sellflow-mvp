@@ -611,7 +611,7 @@ export default function SalesPageEditor() {
               Share this link to start selling your product.
             </p>
             <div className="flex items-center gap-2 bg-[#F8F8FC] rounded-xl px-3 py-2.5 border border-[#E4E4EF] mb-4">
-              <span className="text-[12px] text-[#4E4E68] flex-1 truncate">sellflow.co/p/ola/cake-playbook</span>
+              <span className="text-[12px] text-[#4E4E68] flex-1 truncate">sellfinix.co/p/ola/cake-playbook</span>
               <button onClick={copyLink} className="text-[#5847F5] shrink-0">
                 {copied ? <CheckCheck size={15} className="text-[#0CAF60]" /> : <Copy size={15} />}
               </button>

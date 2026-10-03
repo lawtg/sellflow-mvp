@@ -54,7 +54,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
           <div className="w-7 h-7 rounded-lg bg-[#5847F5] flex items-center justify-center">
             <Zap size={14} className="text-white" strokeWidth={2.5} />
           </div>
-          <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">SellFlow</span>
+          <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
         </div>
         {/* Mobile close */}
         {onClose && (

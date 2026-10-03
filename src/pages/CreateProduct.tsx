@@ -130,7 +130,7 @@ export default function CreateProduct() {
           <div className="w-6 h-6 rounded-lg bg-[#5847F5] flex items-center justify-center">
             <Zap size={12} className="text-white" strokeWidth={2.5} />
           </div>
-          <span className="text-[14px] font-700 text-[#0B0B18]">SellFlow</span>
+          <span className="text-[14px] font-700 text-[#0B0B18]">Sellfinix</span>
           <span className="text-[#E4E4EF] mx-1">·</span>
           <span className="text-[13px] text-[#9292A8]">New Product</span>
         </div>
@@ -241,7 +241,7 @@ export default function CreateProduct() {
             <div>
               <div className="mb-7">
                 <h1 className="text-[24px] font-800 text-[#0B0B18] tracking-tight mb-1">Upload your product</h1>
-                <p className="text-[14px] text-[#9292A8]">Upload your PDF and SellFlow AI will analyze it to build your sales page.</p>
+                <p className="text-[14px] text-[#9292A8]">Upload your PDF and Sellfinix AI will analyze it to build your sales page.</p>
               </div>
               <div className="bg-white rounded-2xl border border-[#E4E4EF] p-6">
                 {!file ? (
@@ -286,10 +286,10 @@ export default function CreateProduct() {
                   className="w-full mt-4 bg-[#5847F5] hover:bg-[#4636E0] text-white font-600 py-3 rounded-xl text-[14px] transition-colors flex items-center justify-center gap-2"
                 >
                   <Sparkles size={16} />
-                  Continue — Let SellFlow AI analyze
+                  Continue — Let Sellfinix AI analyze
                 </button>
                 <p className="text-[11.5px] text-[#9292A8] text-center mt-3">
-                  SellFlow reads your PDF to understand what it teaches. Your file is private and secure.
+                  Sellfinix reads your PDF to understand what it teaches. Your file is private and secure.
                 </p>
               </div>
             </div>
@@ -303,7 +303,7 @@ export default function CreateProduct() {
               </div>
               <h1 className="text-[24px] font-800 text-[#0B0B18] tracking-tight mb-2">Understanding your product</h1>
               <p className="text-[14px] text-[#9292A8] mb-10">
-                SellFlow AI is analyzing your PDF to build the best possible sales page.
+                Sellfinix AI is analyzing your PDF to build the best possible sales page.
               </p>
               <div className="bg-white rounded-2xl border border-[#E4E4EF] p-6 text-left space-y-3.5">
                 {analysisSteps.map((s, i) => (
@@ -337,7 +337,7 @@ export default function CreateProduct() {
                   </div>
                   <div>
                     <div className="text-[12px] font-700 text-[#5847F5]">
-                      SellFlow AI · Question {interviewStep + 1} of {questions.length}
+                      Sellfinix AI · Question {interviewStep + 1} of {questions.length}
                     </div>
                   </div>
                 </div>
@@ -412,7 +412,7 @@ export default function CreateProduct() {
               </div>
               <h1 className="text-[24px] font-800 text-[#0B0B18] tracking-tight mb-2">Building your sales page</h1>
               <p className="text-[14px] text-[#9292A8] mb-10">
-                SellFlow AI is writing your sales copy and designing your page.
+                Sellfinix AI is writing your sales copy and designing your page.
               </p>
               <div className="bg-white rounded-2xl border border-[#E4E4EF] p-6 text-left space-y-3.5">
                 {generationSteps.map((s, i) => (
@@ -445,7 +445,7 @@ export default function CreateProduct() {
                 Your sales page is ready! 🎉
               </h1>
               <p className="text-[14px] text-[#4E4E68] mb-3">
-                SellFlow AI built a complete sales page for{" "}
+                Sellfinix AI built a complete sales page for{" "}
                 <span className="font-700 text-[#0B0B18]">{productName || "your product"}</span>.
               </p>
               <p className="text-[13px] text-[#9292A8] mb-8">

@@ -130,7 +130,7 @@ export default function ProductDetail() {
             <div className="text-[14px] font-700 text-[#0B0B18] mb-1">Sales page link</div>
             <div className="text-[12px] text-[#9292A8] mb-3">Share this link to start selling</div>
             <div className="flex items-center gap-2 bg-[#F8F8FC] rounded-xl px-3 py-2 border border-[#E4E4EF]">
-              <span className="text-[12px] text-[#4E4E68] flex-1 truncate">sellflow.co/p/ola/cake-playbook</span>
+              <span className="text-[12px] text-[#4E4E68] flex-1 truncate">sellfinix.co/p/ola/cake-playbook</span>
               <button className="text-[#5847F5] text-[11.5px] font-600 hover:underline shrink-0">Copy</button>
             </div>
           </div>

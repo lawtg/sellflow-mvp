@@ -66,7 +66,7 @@ export default function Download() {
           <div className="w-8 h-8 rounded-xl bg-[#5847F5] flex items-center justify-center">
             <Zap size={16} className="text-white" strokeWidth={2.5} />
           </div>
-          <span className="text-[17px] font-700 text-[#0B0B18] tracking-tight">SellFlow</span>
+          <span className="text-[17px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
         </div>
 
         {/* Loading */}
@@ -156,7 +156,7 @@ export default function Download() {
               onClick={() => navigate("/")}
               className="w-full border border-[#E4E4EF] text-[#4E4E68] font-500 py-2.5 rounded-xl text-[13.5px] hover:bg-[#F8F8FC] transition-colors"
             >
-              Back to SellFlow
+              Back to Sellfinix
             </button>
           </div>
         )}

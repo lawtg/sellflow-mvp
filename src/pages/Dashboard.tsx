@@ -174,7 +174,7 @@ export default function Dashboard() {
             <Sparkles size={16} className="text-white" />
           </div>
           <div>
-            <div className="text-[12.5px] font-700 text-[#5847F5] mb-1">✦ SellFlow AI noticed something</div>
+            <div className="text-[12.5px] font-700 text-[#5847F5] mb-1">✦ Sellfinix AI noticed something</div>
             <div className="text-[14px] font-500 text-[#0B0B18] mb-1">Your sales page gets visitors, but fewer people are reaching checkout.</div>
             <div className="text-[13px] text-[#4E4E68]">Your Cake Business Playbook page has an 8.2% conversion rate — below the 12% average for similar products. Consider strengthening your offer section and adding social proof.</div>
           </div>

@@ -198,7 +198,7 @@ export default function Analytics() {
             <span className="text-white text-[13px]">✦</span>
           </div>
           <div>
-            <div className="text-[12px] font-700 text-[#5847F5] mb-1">SellFlow AI insight</div>
+            <div className="text-[12px] font-700 text-[#5847F5] mb-1">Sellfinix AI insight</div>
             <div className="text-[13.5px] font-500 text-[#0B0B18] mb-1">
               {parseFloat(convRate) < 8
                 ? "Your conversion rate is below average. Here's what to test."

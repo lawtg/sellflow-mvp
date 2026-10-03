@@ -1,4 +1,4 @@
-# SellFlow — Design Guidelines
+# Sellfinix — Design Guidelines
 
 ## Stance
 Premium modern SaaS · Calm, intelligent, conversion-focused · Trustworthy without being cold.

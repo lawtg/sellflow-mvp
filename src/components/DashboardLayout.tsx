@@ -35,7 +35,7 @@ export default function DashboardLayout() {
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
             </div>
-            <span className="text-[14px] font-700 text-[#0B0B18]">SellFlow</span>
+            <span className="text-[14px] font-700 text-[#0B0B18]">Sellfinix</span>
           </div>
           <button
             onClick={() => setSidebarOpen(true)}

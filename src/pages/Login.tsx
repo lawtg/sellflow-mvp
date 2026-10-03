@@ -55,14 +55,14 @@ export default function Login() {
           <div className="w-8 h-8 rounded-xl bg-[#5847F5] flex items-center justify-center">
             <Zap size={16} className="text-white" strokeWidth={2.5} />
           </div>
-          <span className="text-[17px] font-700 text-[#0B0B18] tracking-tight">SellFlow</span>
+          <span className="text-[17px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
         </div>
 
         {/* ── LOGIN ── */}
         {mode === "login" && (
           <div className="bg-white rounded-2xl border border-[#E4E4EF] p-7 shadow-sm">
             <h1 className="text-[22px] font-800 text-[#0B0B18] tracking-tight mb-1">Welcome back</h1>
-            <p className="text-[13.5px] text-[#9292A8] mb-6">Sign in to your SellFlow account.</p>
+            <p className="text-[13.5px] text-[#9292A8] mb-6">Sign in to your Sellfinix account.</p>
 
             {/* Google */}
             <button

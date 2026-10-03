@@ -184,7 +184,7 @@ export default function Checkout() {
                 {[
                   ["Bank", "Paystack MFB"],
                   ["Account number", "9876543210"],
-                  ["Account name", "SellFlow (Ola Creates)"],
+                  ["Account name", "Sellfinix (Ola Creates)"],
                   ["Amount", "₦15,000"],
                 ].map(([label, val]) => (
                   <div key={label} className="flex justify-between text-[12.5px]">

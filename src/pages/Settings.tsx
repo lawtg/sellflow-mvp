@@ -268,7 +268,7 @@ export default function Settings() {
                 <label className="block text-[12px] font-600 text-[#0B0B18] mb-1.5">Store URL</label>
                 <div className="flex items-center border border-[#E4E4EF] rounded-xl overflow-hidden focus-within:border-[#5847F5] transition-colors">
                   <span className="px-3.5 py-2.5 bg-[#F8F8FC] text-[13px] text-[#9292A8] border-r border-[#E4E4EF] shrink-0">
-                    sellflow.co/
+                    sellfinix.co/
                   </span>
                   <input
                     value={storeSlug}
@@ -277,7 +277,7 @@ export default function Settings() {
                   />
                 </div>
                 <div className="text-[11.5px] text-[#9292A8] mt-1">
-                  Your store: <span className="font-600 text-[#5847F5]">sellflow.co/{storeSlug}</span>
+                  Your store: <span className="font-600 text-[#5847F5]">sellfinix.co/{storeSlug}</span>
                 </div>
               </div>
 
@@ -364,7 +364,7 @@ export default function Settings() {
               <div className="bg-[#F0EBFF] border border-[#D4CCFF] rounded-2xl p-4">
                 <div className="text-[12.5px] font-700 text-[#7C3AED] mb-1">Transaction fees</div>
                 <div className="text-[12.5px] text-[#4E4E68] leading-relaxed">
-                  SellFlow charges <span className="font-700 text-[#0B0B18]">0% platform fee</span>. You only pay your payment provider's standard processing fee (typically 1.5% for Paystack on NGN transactions).
+                  Sellfinix charges <span className="font-700 text-[#0B0B18]">0% platform fee</span>. You only pay your payment provider's standard processing fee (typically 1.5% for Paystack on NGN transactions).
                 </div>
               </div>
             </div>

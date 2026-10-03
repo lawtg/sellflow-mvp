@@ -284,7 +284,7 @@ export default function PublicSalesPage() {
             <div className="w-5 h-5 rounded-md bg-[#5847F5] flex items-center justify-center">
               <Zap size={10} className="text-white" strokeWidth={2.5} />
             </div>
-            <span>Powered by <span className="font-600 text-[#9292A8]">SellFlow</span></span>
+            <span>Powered by <span className="font-600 text-[#9292A8]">Sellfinix</span></span>
           </div>
           <div className="flex gap-4">
             <a href="#" className="hover:text-[#9292A8] transition-colors">Privacy</a>

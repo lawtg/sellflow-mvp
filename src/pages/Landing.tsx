@@ -18,12 +18,12 @@ const features = [
   {
     icon: Upload,
     title: "Upload your product",
-    desc: "Drop in your PDF, ebook, guide, or workbook. SellFlow reads and understands what it is.",
+    desc: "Drop in your PDF, ebook, guide, or workbook. Sellfinix reads and understands what it is.",
   },
   {
     icon: Sparkles,
     title: "AI builds your sales page",
-    desc: "Answer a few questions. SellFlow writes your headline, copy, benefits, and FAQ — instantly.",
+    desc: "Answer a few questions. Sellfinix writes your headline, copy, benefits, and FAQ — instantly.",
   },
   {
     icon: CreditCard,
@@ -73,16 +73,16 @@ const plans = [
 ];
 
 const faqs = [
-  { q: "Do I need any technical skills to use SellFlow?", a: "No. SellFlow is designed so anyone can upload a product, build a sales page with AI, and start selling — without writing a single line of code." },
+  { q: "Do I need any technical skills to use Sellfinix?", a: "No. Sellfinix is designed so anyone can upload a product, build a sales page with AI, and start selling — without writing a single line of code." },
   { q: "Which payment methods do you support?", a: "We support Flutterwave and Paystack for African payments, plus Stripe for international. Customers can pay with cards, bank transfer, and mobile money." },
-  { q: "How does AI build my sales page?", a: "When you upload your PDF, SellFlow reads it to understand what it teaches. Then we ask you a few targeted questions and generate a complete sales page — headline, benefits, FAQ, and CTA." },
+  { q: "How does AI build my sales page?", a: "When you upload your PDF, Sellfinix reads it to understand what it teaches. Then we ask you a few targeted questions and generate a complete sales page — headline, benefits, FAQ, and CTA." },
   { q: "When do I get paid?", a: "Payouts are processed to your bank account on your selected schedule — daily, weekly, or monthly." },
   { q: "Can I use my own domain?", a: "Yes, on Creator and Pro plans you can connect a custom domain to your store and individual product pages." },
 ];
 
 const testimonials = [
-  { name: "Chisom Okafor", role: "Business coach, Lagos", text: "I uploaded my coaching guide on a Tuesday. By Thursday I had made my first ₦47,000. SellFlow wrote my sales page better than I could have.", avatar: "CO" },
-  { name: "Amara Mensah", role: "Fitness creator, Accra", text: "I had no idea how to set up a sales page or collect payment. SellFlow did everything. My Korean Skincare Guide is already selling.", avatar: "AM" },
+  { name: "Chisom Okafor", role: "Business coach, Lagos", text: "I uploaded my coaching guide on a Tuesday. By Thursday I had made my first ₦47,000. Sellfinix wrote my sales page better than I could have.", avatar: "CO" },
+  { name: "Amara Mensah", role: "Fitness creator, Accra", text: "I had no idea how to set up a sales page or collect payment. Sellfinix did everything. My Korean Skincare Guide is already selling.", avatar: "AM" },
   { name: "Dele Adeyemi", role: "Marketing consultant, Ibadan", text: "The AI asked me 6 questions and built a sales page I would have paid a copywriter ₦200,000 for. This tool is special.", avatar: "DA" },
 ];
 
@@ -99,7 +99,7 @@ export default function Landing() {
             <div className="w-7 h-7 rounded-lg bg-[#5847F5] flex items-center justify-center">
               <Zap size={14} className="text-white" strokeWidth={2.5} />
             </div>
-            <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">SellFlow</span>
+            <span className="text-[15px] font-700 text-[#0B0B18] tracking-tight">Sellfinix</span>
           </div>
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-[13.5px] text-[#4E4E68] hover:text-[#0B0B18] transition-colors">Features</a>
@@ -126,7 +126,7 @@ export default function Landing() {
             <span className="text-[#5847F5]">into a sales system.</span>
           </h1>
           <p className="text-[18px] text-[#4E4E68] leading-relaxed max-w-2xl mx-auto mb-8 font-400">
-            Upload your PDF. SellFlow understands it, builds a professional sales page, handles payment, and delivers your product automatically. No tech skills required.
+            Upload your PDF. Sellfinix understands it, builds a professional sales page, handles payment, and delivers your product automatically. No tech skills required.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
@@ -170,7 +170,7 @@ export default function Landing() {
                   ))}
                 </div>
                 <div className="bg-[#F0EEFF] border border-[#D4CCFF] rounded-xl p-3 mb-3">
-                  <div className="text-[11px] font-600 text-[#5847F5] flex items-center gap-1.5 mb-1"><Sparkles size={10} /> SellFlow AI noticed something</div>
+                  <div className="text-[11px] font-600 text-[#5847F5] flex items-center gap-1.5 mb-1"><Sparkles size={10} /> Sellfinix AI noticed something</div>
                   <div className="text-[10.5px] text-[#4E4E68] leading-relaxed">Your sales page gets visitors but fewer reach checkout. Strengthen your offer section.</div>
                 </div>
                 <div className="space-y-2">
@@ -222,7 +222,7 @@ export default function Landing() {
                 AI sales page builder
               </div>
               <h2 className="text-[36px] font-800 text-[#0B0B18] tracking-tight leading-tight mb-4">
-                SellFlow reads your PDF and writes your sales page.
+                Sellfinix reads your PDF and writes your sales page.
               </h2>
               <p className="text-[16px] text-[#4E4E68] leading-relaxed mb-6">
                 Upload your product. Our AI analyzes what it teaches, who it's for, and what transformation it delivers — then generates a complete, conversion-ready sales page in seconds.
@@ -245,7 +245,7 @@ export default function Landing() {
                   <Sparkles size={13} className="text-white" />
                 </div>
                 <div>
-                  <div className="text-[12px] font-700 text-[#0B0B18]">SellFlow AI</div>
+                  <div className="text-[12px] font-700 text-[#0B0B18]">Sellfinix AI</div>
                   <div className="text-[11px] text-[#9292A8]">Building your sales page</div>
                 </div>
               </div>
@@ -393,9 +393,9 @@ export default function Landing() {
             <div className="w-6 h-6 rounded-lg bg-[#5847F5] flex items-center justify-center">
               <Zap size={12} className="text-white" strokeWidth={2.5} />
             </div>
-            <span className="text-[14px] font-700 text-[#0B0B18]">SellFlow</span>
+            <span className="text-[14px] font-700 text-[#0B0B18]">Sellfinix</span>
           </div>
-          <div className="text-[12.5px] text-[#9292A8]">© 2026 SellFlow · Built for African creators, ready for the world.</div>
+          <div className="text-[12.5px] text-[#9292A8]">© 2026 Sellfinix · Built for African creators, ready for the world.</div>
           <div className="flex items-center gap-4 text-[12.5px] text-[#9292A8]">
             <a href="#" className="hover:text-[#4E4E68]">Privacy</a>
             <a href="#" className="hover:text-[#4E4E68]">Terms</a>
